@@ -1,8 +1,21 @@
 {
   "name": "rabbitmq-publisher",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
+  "description": "a simple but flexible rabbitmq publisher for express middleware",
+  "keywords": [
+    "rabbitmq",
+    "publisher",
+    "messaging"
+  ],
+  "homepage": "https://github.com/Dre-OS/rabbitmq-publisher#readme",
+  "bugs": {
+    "url": "https://github.com/Dre-OS/rabbitmq-publisher/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dre-OS/rabbitmq-publisher.git"
+  },
+  "license": "Apache-2.0",
   "author": "Dre-OS",
   "type": "commonjs",
   "main": "index.js",
