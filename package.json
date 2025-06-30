@@ -1,0 +1,21 @@
+{
+  "name": "rabbitmq-publisher",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Dre-OS",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.8",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "rabbitmq-express": "^1.0.4"
+  },
+  "devDependencies": {}
+}
