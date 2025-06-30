@@ -23,7 +23,8 @@ async function connect(uri) {
 }
 
 
-function composePublisher(exchange, exchangeType, routingKey, queue, options) {
+function composePublisher(connectionUri, exchange, exchangeType, routingKey, queue, options) {
+  
   const defaultOptions = {
     durable: true,
     exclusive: false,
@@ -33,7 +34,7 @@ function composePublisher(exchange, exchangeType, routingKey, queue, options) {
   
   return async (message) => {
     try {
-      const {connection, channel} = await connect();
+      const {connection, channel} = await connect(connectionUri);
 
       {exchange ?
         channel.assertExchange(exchange, exchangeType, options || defaultOptions) :
