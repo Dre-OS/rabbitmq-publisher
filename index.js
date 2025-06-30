@@ -23,7 +23,7 @@ async function connect(uri) {
 }
 
 
-function composePublisher(connectionUri, exchange, exchangeType, routingKey, queue, options) {
+function composePublisher({connectionUri, exchange, exchangeType, routingKey, queue, options}) {
   
   const defaultOptions = {
     durable: true,
