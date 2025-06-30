@@ -51,7 +51,6 @@ function composePublisher(connectionUri, exchange, exchangeType, routingKey, que
 }
 
 module.exports = {
-  composePublisher,
-  connect
+  composePublisher
 }
 
