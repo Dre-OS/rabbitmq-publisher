@@ -42,7 +42,7 @@ function composePublisher(props) {
 
       if (props.exchangeType === 'fanout') {
         channel.publish(props.exchange, '', Buffer.from(message));
-      } else if (props.exchangeType === 'direct' || exchangeType === 'topic') {
+      } else if (props.exchangeType === 'direct' || props.exchangeType === 'topic') {
         channel.publish(props.exchange, props.routingKey, Buffer.from(message)) 
       } 
       // else if (props.exchangeType === 'headers') {
