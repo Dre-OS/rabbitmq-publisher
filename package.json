@@ -1,6 +1,6 @@
 {
   "name": "rabbitmq-publisher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a simple but flexible rabbitmq publisher for express middleware",
   "keywords": [
     "rabbitmq",
