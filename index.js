@@ -22,8 +22,8 @@ async function connect(uri) {
     }
 }
 
-
-function composePublisher({exchange, exchangeType, routingKey, queue, headers, options}) {
+// {exchange, exchangeType, routingKey, queue, headers, options}
+function composePublisher(props) {
   const defaultOptions = {
     durable: true,
     exclusive: false,
@@ -35,22 +35,23 @@ function composePublisher({exchange, exchangeType, routingKey, queue, headers, o
     try {
       // const {connection, channel} = await connect(connectionUri);
 
-      {exchange ?
-        channel.assertExchange(exchange, exchangeType, options || defaultOptions) :
-        channel.assertQueue(queue, options || defaultOptions)
+      {props.exchange ?
+        channel.assertExchange(props.exchange, props.exchangeType, props.options || defaultOptions) :
+        channel.assertQueue(props.queue, props.options || defaultOptions)
       }
 
-      if (exchangeType === 'fanout') {
-        channel.publish(exchange, '', Buffer.from(message));
-      } else if (exchangeType === 'direct' || exchangeType === 'topic') {
-        channel.publish(exchange, routingKey, Buffer.from(message)) 
-      } else if (exchangeType === 'headers') {
-        channel.publish(exchange, routingKey, Buffer.from(message), { headers });
-      }
+      if (props.exchangeType === 'fanout') {
+        channel.publish(props.exchange, '', Buffer.from(message));
+      } else if (props.exchangeType === 'direct' || exchangeType === 'topic') {
+        channel.publish(props.exchange, props.routingKey, Buffer.from(message)) 
+      } 
+      // else if (props.exchangeType === 'headers') {
+      //   channel.publish(props.exchange, props.routingKey, Buffer.from(message), { props.headers, });
+      // }
       else {
-        throw new Error(`Unsupported exchange type: ${exchangeType}`);
+        throw new Error(`Unsupported exchange type: ${props.exchangeType}`);
       }
-      console.log(`Message published to ${exchange} with routing key ${routingKey}`);
+      console.log(`Message published to ${props.exchange} with routing key ${props.routingKey}`);
     } catch (error) {
       console.error('Error publishing message:', error);
     }
